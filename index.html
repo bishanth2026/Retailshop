@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+<title>Counter — Shop Management</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ============ LOGIN SCREEN ============ -->
+  <div id="login-screen" class="login-screen">
+    <div class="login-card">
+      <div class="login-mark">
+        <span class="mark-glyph">₹</span>
+      </div>
+      <h1 class="login-title">Counter</h1>
+      <p class="login-sub">Sign in to run today's counter.</p>
+
+      <form id="login-form" class="login-form">
+        <label class="field">
+          <span>Email</span>
+          <input type="email" id="login-email" required autocomplete="username" />
+        </label>
+        <label class="field">
+          <span>Password</span>
+          <input type="password" id="login-password" required autocomplete="current-password" />
+        </label>
+        <div id="login-error" class="login-error" hidden></div>
+        <button type="submit" class="btn btn-primary btn-block" id="login-submit">Sign in</button>
+      </form>
+
+      <button type="button" id="show-signup" class="link-btn">First time here? Create the owner account</button>
+
+      <form id="signup-form" class="login-form" hidden>
+        <label class="field">
+          <span>I am</span>
+          <select id="signup-kind">
+            <option value="owner">The shop owner — set up a new shop</option>
+            <option value="cashier">A cashier — joining an existing shop</option>
+          </select>
+        </label>
+        <label class="field" id="signup-shop-field">
+          <span>Shop name</span>
+          <input type="text" id="signup-shop" />
+        </label>
+        <label class="field" id="signup-shopid-field" hidden>
+          <span>Shop ID (ask your owner for this — Settings → Team)</span>
+          <input type="text" id="signup-shopid" />
+        </label>
+        <label class="field">
+          <span>Your name</span>
+          <input type="text" id="signup-name" required />
+        </label>
+        <label class="field">
+          <span>Email</span>
+          <input type="email" id="signup-email" required />
+        </label>
+        <label class="field">
+          <span>Password</span>
+          <input type="password" id="signup-password" required minlength="6" />
+        </label>
+        <div id="signup-error" class="login-error" hidden></div>
+        <button type="submit" class="btn btn-primary btn-block" id="signup-submit">Create account &amp; sign in</button>
+        <button type="button" id="show-login" class="link-btn">Back to sign in</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ APP SHELL ============ -->
+  <div id="app-shell" class="app-shell" hidden>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-top">
+        <div class="brand">
+          <span class="mark-glyph small">₹</span>
+          <span class="brand-name" id="shop-name-label">Counter</span>
+        </div>
+      </div>
+      <nav class="nav" id="nav-menu">
+        <!-- populated by js -->
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="user-chip">
+          <div class="user-avatar" id="user-avatar">?</div>
+          <div class="user-meta">
+            <div class="user-name" id="user-name">—</div>
+            <div class="user-role" id="user-role">—</div>
+          </div>
+        </div>
+        <button class="btn btn-ghost btn-block" id="logout-btn">Sign out</button>
+      </div>
+    </aside>
+
+    <div class="main-col">
+      <header class="topbar">
+        <button class="icon-btn only-mobile" id="menu-toggle" aria-label="Menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <h1 class="page-title" id="page-title">Dashboard</h1>
+        <div class="topbar-right">
+          <button class="btn btn-primary" id="quick-sale-btn">New sale</button>
+        </div>
+      </header>
+      <main class="content" id="content">
+        <!-- view mounts here -->
+      </main>
+    </div>
+  </div>
+
+  <div id="toast-region" class="toast-region" aria-live="polite"></div>
+  <div id="modal-root"></div>
+  <div id="global-loader" class="global-loader" hidden><div class="spinner"></div></div>
+
+  <script src="js/config.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
